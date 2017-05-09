@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:padding="16dp"
+    tools:context="com.example.android.event.PenyediaActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello Penyedia!"
+       android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="16dp"
+        android:textSize="16dp"
+        android:id="@+id/teks"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:id="@+id/btn_penyedia_logout"
+        android:layout_below="@id/teks"
+        android:layout_marginTop="8dp"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        app:backgroundTint="@color/colorPrimary"
+        app:fabSize="normal"
+        android:src="@drawable/ic_action_create"
+        android:id="@+id/fa_create"
+        />
+
+
+</RelativeLayout>
