@@ -3,31 +3,50 @@ package com.example.android.event;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PopupMenu;
+import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.android.event.Model.BuatAcara;
+import com.example.android.event.ViewHolder.ListAcaraPenyedia;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import static android.R.attr.key;
+import static android.R.attr.thickness;
 
 public class PenyediaActivity extends BaseActivity implements View.OnClickListener,GoogleApiClient.OnConnectionFailedListener {
 
-    private Button mBtnLogout;
+    private DatabaseReference mDatabaseReference,mPenyediaRef;
+    private FirebaseRecyclerAdapter<BuatAcara,ListAcaraPenyedia> mAdapter;
+    private RecyclerView mRecyclerView;
     private GoogleApiClient mGoogleApiClient;
     private FloatingActionButton mFloatingAction;
+
+    public static final String KEY_LIST_ACARA_PENYEDIA = "ACARA PENYEDIA";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_penyedia);
 
-        mBtnLogout =(Button)findViewById(R.id.btn_penyedia_logout);
-        mBtnLogout.setOnClickListener(this);
+        final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Penyedia Acara").child(uid);
 
+
+        mRecyclerView = (RecyclerView)findViewById(R.id.rv_listAcara);
         mFloatingAction = (FloatingActionButton)findViewById(R.id.fa_create);
         mFloatingAction.setOnClickListener(this);
 
@@ -41,16 +60,73 @@ public class PenyediaActivity extends BaseActivity implements View.OnClickListen
                 .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
                 .build();
 
+
+    mAdapter = new FirebaseRecyclerAdapter<BuatAcara, ListAcaraPenyedia>(BuatAcara.class,R.layout.list_acara_item,ListAcaraPenyedia.class,mDatabaseReference) {
+        @Override
+        protected void populateViewHolder(final ListAcaraPenyedia viewHolder, BuatAcara model, int position) {
+                final DatabaseReference penyediaAcaraRef = getRef(position);
+                final String key = penyediaAcaraRef.getKey();
+
+                viewHolder.mTvJudulAcara.setText(model.getJudul());
+                viewHolder.mTvTanggal.setText(model.getWaktu());
+                viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(PenyediaActivity.this, DetailAcaraPenyedia.class);
+                        i.putExtra(KEY_LIST_ACARA_PENYEDIA, key);
+                        startActivity(i);
+                    }
+                });
+            viewHolder.dotsEdit.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+               showPopUpMenu(viewHolder.dotsEdit,key);
+                }
+            });
+
+
+            }
+        };
+
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+    mRecyclerView.setAdapter(mAdapter);
+
+
+    }
+
+    public void showPopUpMenu(View view,String key){
+        PopupMenu popupMenu = new PopupMenu(PenyediaActivity.this,view);
+        MenuInflater inflater = popupMenu.getMenuInflater();
+        inflater.inflate(R.menu.edit_menu,popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(new listAcaraPenyediaMenuClickListener(key));
+        popupMenu.show();
     }
 
 
 
-    private void signOut(){
-        Auth.GoogleSignInApi.signOut(mGoogleApiClient);
-        FirebaseAuth.getInstance().signOut();
-        finish();
-        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu,menu);
+        return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.Logut_id:
+                Auth.GoogleSignInApi.signOut(mGoogleApiClient);
+                FirebaseAuth.getInstance().signOut();
+                finish();
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                return true;
+            default:
+            return super.onOptionsItemSelected(item);
+        }
+    }
+
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
@@ -59,11 +135,31 @@ public class PenyediaActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btn_penyedia_logout:
-                signOut();
-                break;
             case R.id.fa_create:
                 startActivity(new Intent(getApplicationContext(),BuatAcaraActivity.class));
+                break;
     }
 }
+
+    class listAcaraPenyediaMenuClickListener implements PopupMenu.OnMenuItemClickListener{
+
+        String Ref;
+        public  listAcaraPenyediaMenuClickListener(String key){Ref = key;}
+
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.editAcaraPenyedia:
+                    Intent i = new Intent(getApplicationContext(), BuatAcaraActivity.class);
+                    i.putExtra(PenyediaActivity.KEY_LIST_ACARA_PENYEDIA, Ref);
+                    startActivity(i);
+                    return true;
+                case R.id.hapusAcaraPenyedia:
+                    Toast.makeText(PenyediaActivity.this, "Berhasi menghapus acara", Toast.LENGTH_SHORT).show();
+                    return true;
+                default:
+                return true;
+            }
+        }
+    }
 }

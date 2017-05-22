@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.event.DetailAcaraPeserta">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sv_detailAcaraPeserta">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_detailAcaraPeserta"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center_vertical"
+            android:scaleType="fitXY"
+            android:id="@+id/iv_detaiAcaraPeserta"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_image"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Tecno Fair 2017"
+            android:textSize="22sp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="8dp"
+            android:id="@+id/tv_judulDetailAcaraPeserta"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="    Acara ini bertujuan untuk mengenalkan kepada para calon developer bahwa ada beberapa bidang yang layak dicoba. "
+            android:textSize="14sp"
+            android:id="@+id/tv_deskripsiDetailAcaraPeserta"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_tanggalDanHariDetailAcaraPeserta"
+            android:drawableStart="@drawable/ic_date_range"
+            tools:text="Selasa 16 Mei 2017, 09:00-14:00 wib"
+            android:textSize="15sp"
+            android:gravity="center_vertical"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_tempatDetailAcaraPeserta"
+            android:drawableStart="@drawable/ic_location_on"
+            tools:text="D467 Kampus D Unviersitas Gunadarma Depok"
+            android:textSize="15sp"
+            android:gravity="center_vertical"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_kapasitasDetailAcaraPeserta"
+            android:drawableStart="@drawable/ic_person"
+            tools:text="300"
+            android:textSize="15sp"
+            android:gravity="center_vertical"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_penyelenggaraDetailAcaraPeserta"
+            android:drawableStart="@drawable/ic_local_library"
+            tools:text="HIMPUNAN TEKNIK INFORMATIKA"
+            android:textSize="15sp"
+            android:gravity="center_vertical"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="8dp"/>
+    </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/btn_pesanTiketPeserta"
+        android:text="Pesan Tiket"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:background="@color/colorPrimary"/>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardElevation="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:id="@+id/tv_judulAcaraPeserta"
+                tools:text="Implementasi rx java pada Android Naive"
+                android:textSize="22sp"
+                android:layout_marginBottom="8dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_penyelenggaraPeserta"
+                    android:drawableStart="@drawable/ic_local_library"
+                    tools:text="BEM FTI"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="5dp"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="8dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:drawableStart="@drawable/ic_date_range"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    tools:text="Selasa 16 mei 2017, 8:30-14:00 Wib "
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="8dp"
+                    android:id="@+id/tv_tanggalDanHariPeserta"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_kapasitasPeserta"
+                    android:drawableStart="@drawable/ic_person"
+                    android:gravity="center_vertical"
+                    tools:text="100"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="115dp"
+                android:layout_weight="1"
+                android:id="@+id/iv_posterAcaraPeserta"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/ic_image"
+                android:scaleType="fitXY" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</android.support.v7.widget.CardView>

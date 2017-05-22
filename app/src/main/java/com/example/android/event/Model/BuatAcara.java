@@ -9,8 +9,8 @@ import java.util.Map;
 
 public class BuatAcara {
 
-    public String uid,PenyediaAcara,Judul,Deskripsi,Waktu,Tempat,Organisasi,PhotoAcara;
-   public int Kapasitas;
+    private String uid,PenyediaAcara,Judul,Deskripsi,Waktu,Tempat,Organisasi,PhotoAcara;
+   private int Kapasitas;
 
     public BuatAcara(){}
 
@@ -70,7 +70,7 @@ public class BuatAcara {
 
     public String getPhotoAcara(){return this.PhotoAcara;}
 
-   public void setPhotoAcara(String PhotoUrl){this.PhotoAcara = PhotoAcara;}
+   public void setPhotoAcara(String PhotoAcara){this.PhotoAcara = PhotoAcara;}
 
     public int getKapasitas(){return this.Kapasitas;}
 

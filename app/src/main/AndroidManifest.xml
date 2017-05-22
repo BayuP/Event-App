@@ -20,7 +20,11 @@
         </activity>
         <activity android:name=".PenyediaActivity" />
         <activity android:name=".PesertaActivity" />
-        <activity android:name=".BuatAcaraActivity"></activity>
+        <activity
+            android:name=".BuatAcaraActivity"
+            android:parentActivityName=".PenyediaActivity" />
+        <activity android:name=".DetailAcaraPenyedia" />
+        <activity android:name=".DetailAcaraPeserta"></activity>
     </application>
 
 </manifest>

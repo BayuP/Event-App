@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.event.DetailAcaraPenyedia"
+    android:paddingTop="5dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_detailAcaraPenyadia"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:padding="4dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/iv_detailAcaraPenyedia"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_image"
+            android:scaleType="fitXY"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Tecno Fair 2017"
+            android:layout_margin="8dp"
+            android:id="@+id/tv_judulDetailAcaraPenyedia"
+            android:textSize="22sp"/>
+
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rv_listPesertaDetailAcaraPenyedia"
+        android:layout_below="@id/layout_detailAcaraPenyadia"
+        tools:listitem="@layout/list_detail_acara_peserta_item">
+    </android.support.v7.widget.RecyclerView>
+
+
+
+</RelativeLayout>
