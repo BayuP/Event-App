@@ -10,7 +10,7 @@ import java.util.Map;
 public class BuatAcara {
 
     private String uid,PenyediaAcara,Judul,Deskripsi,Waktu,Tempat,Organisasi,PhotoAcara;
-   private int Kapasitas;
+  private int Kapasitas;
 
     public BuatAcara(){}
 

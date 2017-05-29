@@ -1,6 +1,7 @@
 package com.example.android.event;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.os.Bundle;
@@ -21,19 +22,33 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.sql.Ref;
+
+import static android.R.attr.data;
+import static android.R.attr.id;
 import static android.R.attr.key;
 import static android.R.attr.thickness;
 
 public class PenyediaActivity extends BaseActivity implements View.OnClickListener,GoogleApiClient.OnConnectionFailedListener {
 
-    private DatabaseReference mDatabaseReference,mPenyediaRef;
+    private DatabaseReference mDatabaseReference,mDataref,mDatareference;
+    private StorageReference mStorageReference;
     private FirebaseRecyclerAdapter<BuatAcara,ListAcaraPenyedia> mAdapter;
     private RecyclerView mRecyclerView;
     private GoogleApiClient mGoogleApiClient;
     private FloatingActionButton mFloatingAction;
+
+
+    private Uri mImageData;
 
     public static final String KEY_LIST_ACARA_PENYEDIA = "ACARA PENYEDIA";
 
@@ -44,6 +59,9 @@ public class PenyediaActivity extends BaseActivity implements View.OnClickListen
 
         final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Penyedia Acara").child(uid);
+        mDataref = FirebaseDatabase.getInstance().getReference();
+        mStorageReference = FirebaseStorage.getInstance().getReference();
+
 
 
         mRecyclerView = (RecyclerView)findViewById(R.id.rv_listAcara);
@@ -63,7 +81,7 @@ public class PenyediaActivity extends BaseActivity implements View.OnClickListen
 
     mAdapter = new FirebaseRecyclerAdapter<BuatAcara, ListAcaraPenyedia>(BuatAcara.class,R.layout.list_acara_item,ListAcaraPenyedia.class,mDatabaseReference) {
         @Override
-        protected void populateViewHolder(final ListAcaraPenyedia viewHolder, BuatAcara model, int position) {
+        protected void populateViewHolder(final ListAcaraPenyedia viewHolder, BuatAcara model, final int position) {
                 final DatabaseReference penyediaAcaraRef = getRef(position);
                 final String key = penyediaAcaraRef.getKey();
 
@@ -75,6 +93,7 @@ public class PenyediaActivity extends BaseActivity implements View.OnClickListen
                         Intent i = new Intent(PenyediaActivity.this, DetailAcaraPenyedia.class);
                         i.putExtra(KEY_LIST_ACARA_PENYEDIA, key);
                         startActivity(i);
+
                     }
                 });
             viewHolder.dotsEdit.setOnClickListener(new View.OnClickListener(){
@@ -141,10 +160,21 @@ public class PenyediaActivity extends BaseActivity implements View.OnClickListen
     }
 }
 
+    private void deleteAcara(String Ref){
+        final String uidStorage = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        final StorageReference mDeleteRef = mStorageReference.child(getUid()).child(Ref);
+        mDataref.child("Acara").child(Ref).removeValue();
+        mDataref.child("Penyedia Acara").child(getUid()).child(Ref).removeValue();
+        mDeleteRef.delete();
+
+
+    }
+
     class listAcaraPenyediaMenuClickListener implements PopupMenu.OnMenuItemClickListener{
 
         String Ref;
-        public  listAcaraPenyediaMenuClickListener(String key){Ref = key;}
+        public  listAcaraPenyediaMenuClickListener(String key){
+            Ref = key;}
 
         @Override
         public boolean onMenuItemClick(MenuItem item) {
@@ -155,7 +185,7 @@ public class PenyediaActivity extends BaseActivity implements View.OnClickListen
                     startActivity(i);
                     return true;
                 case R.id.hapusAcaraPenyedia:
-                    Toast.makeText(PenyediaActivity.this, "Berhasi menghapus acara", Toast.LENGTH_SHORT).show();
+                    deleteAcara(Ref);
                     return true;
                 default:
                 return true;

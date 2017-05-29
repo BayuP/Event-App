@@ -153,7 +153,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                         Log.d(TAG,user.getNama());
                         hideProgressDialog();
                         if(user.Penyedia == false){
-                            Toast.makeText(LoginActivity.this,"berhasil peserta",Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),PesertaActivity.class));
                             finish();
                         }else if(user.Penyedia == true) {

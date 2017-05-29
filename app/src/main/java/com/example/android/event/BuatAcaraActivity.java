@@ -52,7 +52,7 @@ public class BuatAcaraActivity extends BaseActivity implements View.OnClickListe
     private String photoAcara,judulAcara,deskripsiAcara,tempatAcara,waktuAcara,organisasi;
     private Uri mImageData = null;
     private int kapasitasAcara;
-    private String keyBawaan;
+    private String keyBawaan,key;
 
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
@@ -86,6 +86,8 @@ public class BuatAcaraActivity extends BaseActivity implements View.OnClickListe
 
         mFloatingAction = (FloatingActionButton) findViewById(R.id.fa_Done);
         mFloatingAction.setOnClickListener(this);
+
+         key = mDatabaseReference.child("Acara").push().getKey();
 
         if(getIntent().hasExtra(PenyediaActivity.KEY_LIST_ACARA_PENYEDIA)){
             keyBawaan = getIntent().getStringExtra(PenyediaActivity.KEY_LIST_ACARA_PENYEDIA);
@@ -179,10 +181,10 @@ public class BuatAcaraActivity extends BaseActivity implements View.OnClickListe
 
         setEnable(true);
         if (mImageData != null) {
-            Log.e(ERROR,"Di image data");
+            Log.e(ERROR, "Di image data");
             showProgressDialog();
             String idFile = mImageData.getLastPathSegment();
-            mStorageREf.child("Acara").child(uid).child(idFile).putFile(mImageData)
+            mStorageREf.child(uid).child(key).child(idFile).putFile(mImageData)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -193,14 +195,19 @@ public class BuatAcaraActivity extends BaseActivity implements View.OnClickListe
                     }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-               Toast.makeText(getApplicationContext(),"Terdapat kesalahan format data",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Terdapat kesalahan format data", Toast.LENGTH_SHORT).show();
                 }
             });
         }
-         else {
-            updateAcara(uid, mJudul, mDeskripsi, mWaktu, mTempat, mOrganisasi, Integer.parseInt(mKapasitas),urlTemp);
+        if ((urlTemp == null) && (mImageData == null)) {
+            Toast.makeText(getApplicationContext(), "Masukan gambar", Toast.LENGTH_SHORT).show();
         }
-    }
+        if ((urlTemp != null) && (mImageData == null)) {
+                showProgressDialog();
+                updateAcara(uid, mJudul, mDeskripsi, mWaktu, mTempat, mOrganisasi, Integer.parseInt(mKapasitas), urlTemp);
+            }
+        }
+
 
     private void setEnable(boolean b) {
         mEtJudul.setEnabled(b);
@@ -217,7 +224,7 @@ public class BuatAcaraActivity extends BaseActivity implements View.OnClickListe
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Users users = dataSnapshot.getValue(Users.class);
-                String key = mDatabaseReference.child("Acara").push().getKey();
+
 
                 if(keyBawaan != null){
                     key = keyBawaan;

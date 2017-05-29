@@ -38,6 +38,8 @@
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="5dp"
+        android:scrollbars="vertical"
         android:id="@+id/rv_listPesertaDetailAcaraPenyedia"
         android:layout_below="@id/layout_detailAcaraPenyadia"
         tools:listitem="@layout/list_detail_acara_peserta_item">

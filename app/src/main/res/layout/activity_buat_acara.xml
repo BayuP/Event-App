@@ -25,7 +25,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Title"
+            android:hint="Judul"
+            android:inputType="textCapSentences"
             android:maxLines="2"
             android:id="@+id/et_title"/>
 
@@ -40,7 +41,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Description"
+            android:hint="Deskripsi"
+            android:inputType="textCapSentences"
             android:maxLines="4"
             android:id="@+id/et_description"/>
 
@@ -55,7 +57,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Date and Time"
+            android:hint="Tanggal dan waktu"
+            android:inputType="textCapSentences"
             android:maxLines="2"
             android:id="@+id/et_date"/>
 
@@ -70,7 +73,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Place"
+            android:hint="Tempat"
+            android:inputType="textCapSentences"
             android:maxLines="2"
             android:id="@+id/et_place"/>
 
@@ -92,7 +96,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Capacity"
+            android:hint="Kapasitas"
             android:maxLines="1"
             android:id="@+id/et_capacity"/>
 
@@ -120,7 +124,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Organization"
+            android:hint="Organisai"
+            android:inputType="textCapSentences"
             android:maxLines="1"
             android:id="@+id/et_organization"/>
 
