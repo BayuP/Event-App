@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.android.event.BuatAcaraActivity"
     android:padding="16dp">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -124,7 +125,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Organisai"
+            android:hint="Organisasi"
             android:inputType="textCapSentences"
             android:maxLines="1"
             android:id="@+id/et_organization"/>
@@ -148,7 +149,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="8dp"
         android:layout_marginRight="8dp"
-        app:backgroundTint="@color/colorPrimary"
+        app:backgroundTint="@color/colorAccent"
         app:fabSize="normal"
         android:src="@drawable/ic_action_done48"
         android:id="@+id/fa_Done" />

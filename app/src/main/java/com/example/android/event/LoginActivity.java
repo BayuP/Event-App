@@ -3,13 +3,17 @@ package com.example.android.event;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.event.Model.Users;
+import com.felipecsl.gifimageview.library.GifImageView;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -30,6 +34,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import static android.R.attr.bitmap;
 import static android.R.attr.data;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener,GoogleApiClient.OnConnectionFailedListener {
@@ -49,7 +54,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private SignInButton mSignBtnPenyedia,mSignBtnPeserta;
 
     private Button mBtnPenyedia,mBtnPeserta;
-    private LinearLayout mLayoutView,mLayoutPenyedia,mLayoutPeserta;
+    private LinearLayout mLayoutView;
+    private RelativeLayout mLayoutPenyedia,mLayoutPeserta;
+
+    public GifImageView gifImageView;
+    private TextView mTvPindahPenyedia,mTvPindahPeserta;
 
 
 
@@ -75,10 +84,32 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 .build();
 
 
-        mLayoutView =(LinearLayout) findViewById(R.id.view_atau);
-        mLayoutPenyedia =(LinearLayout) findViewById(R.id.Layout_penyedia);
-        mLayoutPeserta = (LinearLayout) findViewById(R.id.Layout_peserta);
 
+
+        mLayoutView =(LinearLayout) findViewById(R.id.view_atau);
+        mLayoutPenyedia =(RelativeLayout) findViewById(R.id.Layout_penyedia);
+        mLayoutPeserta = (RelativeLayout) findViewById(R.id.Layout_peserta);
+
+        mTvPindahPenyedia = (TextView)findViewById(R.id.tv_pindahPenyedia);
+        mTvPindahPenyedia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mBtnPenyedia.setVisibility(View.VISIBLE);
+                mBtnPeserta.setVisibility(View.VISIBLE);
+                mLayoutView.setVisibility(View.VISIBLE);
+                mLayoutPenyedia.setVisibility(View.GONE);
+            }
+        });
+        mTvPindahPeserta = (TextView)findViewById(R.id.tv_pindahPeserta);
+        mTvPindahPeserta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mBtnPenyedia.setVisibility(View.VISIBLE);
+                mBtnPeserta.setVisibility(View.VISIBLE);
+                mLayoutView.setVisibility(View.VISIBLE);
+                mLayoutPeserta.setVisibility(View.GONE);
+            }
+        });
 
         mBtnPenyedia = (Button) findViewById(R.id.btn_penyedia);
         mBtnPenyedia.setOnClickListener(this);
@@ -246,6 +277,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             case R.id.google_signBtnPeserta:
                 signInGoogle();
                 break;
+
         }
     }
 

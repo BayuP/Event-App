@@ -165,6 +165,7 @@ public class PenyediaActivity extends BaseActivity implements View.OnClickListen
         final StorageReference mDeleteRef = mStorageReference.child(getUid()).child(Ref);
         mDataref.child("Acara").child(Ref).removeValue();
         mDataref.child("Penyedia Acara").child(getUid()).child(Ref).removeValue();
+        mDataref.child("Peserta Acara").child(Ref).removeValue();
         mDeleteRef.delete();
 
 

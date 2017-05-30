@@ -31,6 +31,7 @@
             android:layout_height="wrap_content"
             tools:text="Tecno Fair 2017"
             android:layout_margin="8dp"
+            android:textColor="@color/colorPrimaryText"
             android:id="@+id/tv_judulDetailAcaraPenyedia"
             android:textSize="22sp"/>
 

@@ -23,7 +23,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="8dp"
         android:layout_marginRight="8dp"
-        app:backgroundTint="@color/colorPrimary"
+        app:backgroundTint="@color/colorAccent"
         app:fabSize="normal"
         android:src="@drawable/ic_action_create"
         android:id="@+id/fa_create"

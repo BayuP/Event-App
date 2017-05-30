@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:padding="16dp"
+    android:background="@color/colorPrimary"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.android.event.LoginActivity">
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:text="EventApp"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryLight"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Penyedia"
         android:id="@+id/btn_penyedia"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="150dp"/>
+       android:layout_marginTop="215dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/colorPrimaryText"
+        android:background="@color/colorPrimaryLight"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,7 +38,7 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:layout_marginStart="20dp"
-            android:background="@color/colorPrimaryDark"/>
+            android:background="@color/colorPrimaryLight"/>
 
         <TextView
             android:layout_width="0dp"
@@ -35,8 +46,9 @@
             android:layout_weight="0.5"
             android:layout_height="wrap_content"
             android:text="Atau"
-            android:textSize="16dp"
-            android:textColor="@color/colorPrimaryDark"/>
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimaryLight"/>
 
         <View
             android:layout_width="0dp"
@@ -44,23 +56,70 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:layout_marginEnd="20dp"
-            android:background="@color/colorPrimaryDark"/>
+            android:background="@color/colorPrimaryLight"/>
     </LinearLayout>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Peserta"
+        android:textColor="@color/colorPrimaryText"
+        android:background="@color/colorPrimaryLight"
         android:id="@+id/btn_peserta"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_below="@id/view_atau"/>
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         android:padding="16dp"
+        android:layout_marginTop="16dp"
         android:id="@+id/Layout_penyedia"
         android:visibility="gone">
 
+
+       <ImageView
+           android:layout_width="270dp"
+           android:layout_height="330dp"
+           android:src="@drawable/anthony"
+           android:id="@+id/iv_penyedia"
+           android:layout_centerHorizontal="true"
+           android:layout_centerVertical="true"
+           android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_penyedia"
+            android:text="  Login sebagai penyedia,artinya anda dapat membuat acara yang anda inginkan."
+            android:textColor="@color/colorPrimaryLight"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif-condensed"
+            android:textAlignment="center"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bukan penyedia klik "
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@color/colorPrimaryLight"
+            android:textSize="16sp"
+            android:layout_marginEnd="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Disini"
+                android:textSize="15sp"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/colorAccent"
+                android:onClick="onClick"
+                android:id="@+id/tv_pindahPenyedia"/>
+
+        </LinearLayout>
         <com.google.android.gms.common.SignInButton
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -68,15 +127,62 @@
             android:layout_gravity="center_horizontal"
             android:id="@+id/google_signBtnPenyedia">
         </com.google.android.gms.common.SignInButton>
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="horizontal"
         android:padding="16dp"
+        android:layout_marginTop="16dp"
         android:id="@+id/Layout_peserta"
         android:visibility="gone">
+
+        <ImageView
+            android:layout_width="270dp"
+            android:layout_height="330dp"
+            android:src="@drawable/gif"
+            android:id="@+id/iv_peserta"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_peserta"
+            android:text="  Login sebagai peserta,artinya anda dapat mengikuti semua acara yang ada."
+            android:textColor="@color/colorPrimaryLight"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif-condensed"
+            android:textAlignment="center"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bukan peserta klik"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/colorPrimaryLight"
+                android:textSize="16sp"
+                android:layout_marginEnd="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                android:text="Disini"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="16sp"
+                android:id="@+id/tv_pindahPeserta"
+                android:textColor="@color/colorAccent"/>
+
+
+        </LinearLayout>
+
         <com.google.android.gms.common.SignInButton
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -86,5 +192,5 @@
         </com.google.android.gms.common.SignInButton>
 
 
-    </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>

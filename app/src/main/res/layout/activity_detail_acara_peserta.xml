@@ -29,6 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="Tecno Fair 2017"
+            android:textColor="@color/colorPrimaryText"
             android:textSize="22sp"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
@@ -104,7 +105,17 @@
         android:text="Pesan Tiket"
         android:textStyle="bold"
         android:textColor="@android:color/white"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorPrimaryDark"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/btn_batalPesanTiket"
+        android:text="Batal Pesan"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:background="@color/colorAccent"
+        android:visibility="gone"/>
 
 
 

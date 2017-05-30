@@ -26,6 +26,7 @@
             android:id="@+id/tv_namaPeserta"
             android:textSize="18sp"
             tools:text="Bayu Y "
+            android:textColor="@color/colorSecondaryText"
             android:gravity="center_vertical"/>
 
         <ImageView
