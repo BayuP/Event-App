@@ -26,7 +26,7 @@ import static android.R.attr.button;
 public class DetailAcaraPeserta extends BaseActivity implements View.OnClickListener {
 
     private TextView mTvJudulDetailAcaraPeserta,mTvDEskripsiDetailAcaraPeserta,
-    mTvTanggalDanHariDetailAcaraPeserta,mTvTempatDetailAcaraPeserta,mTvKapasitasDetailAcaraPeserta,mTvPenyelenggaraDetailAcaraPeserta;
+    mTvTanggalDanHariDetailAcaraPeserta,mTvTempatDetailAcaraPeserta,mTvKapasitasDetailAcaraPeserta,mTvPenyelenggaraDetailAcaraPeserta,mTvJamDetailAcaraPeserta;
 
     private ImageView mIvGambarDetailAcaraPeserta;
     private Button mBtnPesanTiket,mBtnBatalPesan;
@@ -55,6 +55,7 @@ public class DetailAcaraPeserta extends BaseActivity implements View.OnClickList
         mTvJudulDetailAcaraPeserta = (TextView) findViewById(R.id.tv_judulDetailAcaraPeserta);
         mTvDEskripsiDetailAcaraPeserta = (TextView) findViewById(R.id.tv_deskripsiDetailAcaraPeserta);
         mTvTanggalDanHariDetailAcaraPeserta = (TextView) findViewById(R.id.tv_tanggalDanHariDetailAcaraPeserta);
+        mTvJamDetailAcaraPeserta = (TextView)findViewById(R.id.tv_jamDetailAcaraPeserta);
         mTvTempatDetailAcaraPeserta = (TextView) findViewById(R.id.tv_tempatDetailAcaraPeserta);
         mTvKapasitasDetailAcaraPeserta = (TextView) findViewById(R.id.tv_kapasitasDetailAcaraPeserta);
         mTvPenyelenggaraDetailAcaraPeserta = (TextView) findViewById(R.id.tv_penyelenggaraDetailAcaraPeserta);
@@ -69,6 +70,7 @@ public class DetailAcaraPeserta extends BaseActivity implements View.OnClickList
                     mTvJudulDetailAcaraPeserta.setText(buatAcara.getJudul());
                     mTvDEskripsiDetailAcaraPeserta.setText(buatAcara.getDeskripsi());
                     mTvTanggalDanHariDetailAcaraPeserta.setText(buatAcara.getWaktu());
+                    mTvJamDetailAcaraPeserta.setText(buatAcara.getJam());
                     mTvTempatDetailAcaraPeserta.setText(buatAcara.getTempat());
                     mTvKapasitasDetailAcaraPeserta.setText(String.valueOf(buatAcara.getKapasitas()));
                     mTvPenyelenggaraDetailAcaraPeserta.setText(buatAcara.getOrganisasi());

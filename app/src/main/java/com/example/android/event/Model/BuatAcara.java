@@ -9,12 +9,12 @@ import java.util.Map;
 
 public class BuatAcara {
 
-    private String uid,PenyediaAcara,Judul,Deskripsi,Waktu,Tempat,Organisasi,PhotoAcara;
+    private String uid,PenyediaAcara,Judul,Deskripsi,Waktu,Tempat,Organisasi,PhotoAcara,Jam;
   private int Kapasitas;
 
     public BuatAcara(){}
 
-    public BuatAcara(String uid,String PenyediaAcara,String Judul,String Deskripsi,String Waktu,String Tempat,String Organisasi,int Kapasitas ,String photoacara){
+    public BuatAcara(String uid,String PenyediaAcara,String Judul,String Deskripsi,String Waktu,String Tempat,String Organisasi,int Kapasitas ,String photoacara,String jam){
         this.uid =uid;
         this.PenyediaAcara = PenyediaAcara;
         this.Judul = Judul;
@@ -24,6 +24,7 @@ public class BuatAcara {
         this.Organisasi = Organisasi;
         this.Kapasitas = Kapasitas;
         this.PhotoAcara = photoacara;
+        this.Jam = jam;
 
 
     }
@@ -38,6 +39,7 @@ public class BuatAcara {
         map.put("Organisasi",Organisasi);
         map.put("Kapasitas",Kapasitas);
         map.put("PhotoAcara",PhotoAcara);
+        map.put("Jam",Jam);
         return map;
     }
     public String getuid(){return  this.uid;}
@@ -75,6 +77,10 @@ public class BuatAcara {
     public int getKapasitas(){return this.Kapasitas;}
 
    public void  setKapasitas(int Kapasitas){this.Kapasitas = Kapasitas;}
+
+    public String getJam(){return  this.Jam;}
+
+    public void setJam(String Jam){this.Jam = Jam;}
 
 
 }

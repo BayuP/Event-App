@@ -26,7 +26,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Judul"
+            android:hint="Nama Acara"
             android:inputType="textCapSentences"
             android:maxLines="2"
             android:id="@+id/et_title"/>
@@ -58,12 +58,30 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tanggal dan waktu"
+            android:hint="Waktu"
             android:inputType="textCapSentences"
             android:maxLines="2"
-            android:id="@+id/et_date"/>
+            android:focusable="false"
+            android:id="@+id/et_time"/>
 
     </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tanggal "
+                android:inputType="textCapSentences"
+                android:maxLines="2"
+                android:focusable="false"
+                android:id="@+id/et_date"/>
+
+        </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -92,7 +110,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="2"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp">
+        android:layout_marginBottom="8dp"
+        android:inputType="number">
 
         <EditText
             android:layout_width="match_parent"
